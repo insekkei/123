@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+.App {
+  width: 900px;
+  padding: 40px;
+  margin: 0 auto;
+}
+.CategoryItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+.BookMarksList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+.CategoryName {
+  width: 10em;
+  line-height: 22px;
+  font-size: 14px;
+  color: #999;
+}
+.BookMarksItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 52px;
+  margin: 0 30px 20px;
+  text-decoration: none;
+  text-align: center;
+  transition: all .2s ease;
+}
+.BookMarksIcon {
+  width: 100%;
+  height: 52px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 32px;
+  font-size: 24px;
+  background: #398fda;
+  color: #fff;
+}
+.BookMarksText {
+  max-height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #333;
+}
+.BookMarksItem:hover {
+  opacity: .9;
+}
