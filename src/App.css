@@ -3,13 +3,17 @@
 }
 .App {
   width: 900px;
-  padding: 40px;
+  padding: 80px 40px 40px;
   margin: 0 auto;
 }
 .CategoryItem {
   display: flex;
   align-items: flex-start;
   margin-bottom: 40px;
+  border-bottom: 2px dashed #eee;
+}
+.CategoryItem:last-child {
+  border-bottom: 0;
 }
 .BookMarksList {
   display: flex;
@@ -45,14 +49,86 @@
   color: #fff;
 }
 .BookMarksText {
-  max-height: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-align: left;
   margin-top: 4px;
   font-size: 12px;
   color: #333;
 }
 .BookMarksItem:hover {
   opacity: .9;
+}
+.DataUrlInfo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  background: #fafafa;
+  z-index: 2;
+  font-size: 14px;
+  transition: all .3s ease;
+  transform: translateY(0);
+}
+
+.DataUrlInfo.hide {
+  transform: translateY(-50px);
+}
+
+.DataUrlInfo input {
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  padding: 10px 10px;
+  color: #999;
+  outline: 0;
+}
+.DataUrlInfo input[type='text'] {
+  width: 700px;
+  margin-left: calc(50vw - 450px);
+}
+.DataUrlInfo input[type='button'] {
+  background: #0084ff;
+  border-color: #0084ff;
+  padding: 10px 20px;
+  color: #fff;
+}
+.DataUrlInfo input[type='text']::selection {
+  background: #333;
+  color: #fff;
+}
+.DataUrlInfo input[type='text']:hover {
+  box-shadow: 0 2px 10px 1px #ddd;
+  transition: all .2s ease;
+}
+.Close {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: inline-block;
+  padding: 10px;
+  font-size: 20px;
+  line-height: 34px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.UpdateUrl {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  padding: 4px 10px;
+  color: #999;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Message {
+  color: #FF9800;
+}
+.Bar.Message {
+  padding: 5px 15px;
+  border: 1px dashed #ddd;
+  color: #999;
 }

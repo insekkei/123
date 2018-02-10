@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {data} from './data'
 import './App.css'
 
 const colors = {
@@ -12,7 +11,22 @@ const colors = {
   6: '85, 186, 230'
 }
 
+const defaultDataUrl = 'https://gist.githubusercontent.com/insekkei/dcb137b97d58131dde016bc4edebcfb0/raw/87d01ee1be238e014101bd73e4c804e10647a369/data.json'
+
 class App extends Component {
+  constructor () {
+    super()
+
+    const localDataUrl = localStorage.getItem('dataUrl')
+    this.state = {
+      dataUrl: localDataUrl || defaultDataUrl,
+      remoteFile: {data: []},
+      showUrlInfo: false
+    }
+  }
+  componentDidMount () {
+    this.fetchDataUrl()
+  }
   getBackColor = (str) => {
     let hash = 0
     if (str.length === 0) return hash;
@@ -26,9 +40,59 @@ class App extends Component {
     return `rgb(${colors[colorIndex]})`
   }
 
+  onDataUrlChange = (e) => {
+    this.setState({
+      dataUrl: e.target.value
+    })
+  }
+
+  fetchDataUrl = () => {
+    const {dataUrl} = this.state
+    localStorage.setItem('dataUrl', dataUrl)
+    fetch(dataUrl).then((res) => {
+      Promise.resolve(res.json()).then(result => {
+        this.setState({
+          remoteFile: result,
+          message: '',
+          showUrlInfo: false
+        })
+      }).catch(e => {
+        this.setState({
+          message: '文件格式解析错误'
+        })
+      })
+    }).catch(e => {
+      this.setState({
+        message: 'url 请求不过来'
+      })
+    })
+  }
+
   render() {
+    const {remoteFile: {data}, showUrlInfo, message} = this.state
     return (
       <div className="App CategoryList">
+
+        <div className={`DataUrlInfo ${showUrlInfo ? 'show' : 'hide'}`}>
+          <input type='text' value={this.state.dataUrl} onChange={this.onDataUrlChange} />
+          <input type='button' value='UPDATE' onClick={this.fetchDataUrl} />
+          {
+            message && (
+              <span className='Message'>{message}</span>
+            )
+          }
+          <span className='Close' onClick={() => { this.setState({showUrlInfo: false}) }}>&times;</span>
+        </div>
+        <div className='UpdateUrl' onClick={() => { this.setState({showUrlInfo: true}) }}>
+          SETTINGS
+        </div>
+
+        {
+          message && !showUrlInfo && (
+            <div className='Message Bar'>{message}</div>
+          )
+        }
+
         {
           data.map((catItem, catIndex) => (
             <div key={catIndex} className='CategoryItem'>
