@@ -102,7 +102,7 @@ class App extends Component {
                   catItem.bookMarks.map((bookMarksItem, bookMarksIndex) => {
                     const background = this.getBackColor(bookMarksItem.name)
                     return (
-                      <a href={bookMarksItem.url} target='_target' key={bookMarksIndex} className='BookMarksItem'>
+                      <a href={bookMarksItem.url} target='_blank' key={bookMarksIndex} className='BookMarksItem'>
                         <div className='BookMarksIcon' style={{
                           background
                         }}>{bookMarksItem.name.slice(0, 1)}</div>

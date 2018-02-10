@@ -73,7 +73,7 @@
 }
 
 .DataUrlInfo.hide {
-  transform: translateY(-50px);
+  transform: translateY(-60px);
 }
 
 .DataUrlInfo input {
