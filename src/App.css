@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 .App {
-  width: 900px;
+  width: 1000px;
   padding: 80px 40px 40px;
   margin: 0 auto;
 }
@@ -22,7 +22,8 @@
   margin-left: 20px;
 }
 .CategoryName {
-  width: 10em;
+  flex-shrink: 0;
+  width: 6em;
   line-height: 22px;
   font-size: 14px;
   color: #999;
@@ -32,7 +33,7 @@
   flex-direction: column;
   justify-content: center;
   width: 52px;
-  margin: 0 30px 20px;
+  margin: 0 25px 20px;
   text-decoration: none;
   text-align: center;
   transition: all .2s ease;
@@ -84,7 +85,7 @@
 }
 .DataUrlInfo input[type='text'] {
   width: 700px;
-  margin-left: calc(50vw - 450px);
+  margin-left: calc(50vw - 500px);
 }
 .DataUrlInfo input[type='button'] {
   background: #0084ff;
